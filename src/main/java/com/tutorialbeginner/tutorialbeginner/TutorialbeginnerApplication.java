@@ -17,30 +17,20 @@ import org.springframework.jdbc.core.JdbcTemplate;
 				HibernateJpaAutoConfiguration.class
 		}
 )
-public class TutorialbeginnerApplication {
+public class TutorialbeginnerApplication implements CommandLineRunner {
 
 	@Autowired
-	JdbcTemplate jdbcTemplate;
+	PersonDao personDao;
 
 	public static void main(String[] args) {
 		System.out.println("Hello spring boot");
 		ConfigurableApplicationContext context = SpringApplication.run(TutorialbeginnerApplication.class, args);
-		Person person1 = context.getBean(Person.class);
-		person1.setName("Donya");
-		person1.setSurname("Hajimohammadi");
-		person1.setAddress("France");
-		person1.setTel(912441453);
-		System.out.println(person1.toString());
-		person1.user.setEmail("donya@yahoo.com");
-		System.out.println(person1.user.getEmail());
-		Person person2 = (Person) context.getBean("person");
-		person2.setSurname("Soheil");
-		person2.setName("NAMDAR");
-		person2.setAddress("IRAN");
-		person2.setTel(919760744);
-		System.out.println(person2.toString());
-		person2.user.setEmail("soheilnamdar@yahoo.com");
-		System.out.println(person2.user.getEmail());
+
 	}
+
+		@Override
+		public void run(String... args) throws Exception {
+			personDao.persist();
+		}
 
 }
