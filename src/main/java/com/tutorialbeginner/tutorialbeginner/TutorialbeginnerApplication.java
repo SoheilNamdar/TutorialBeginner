@@ -17,7 +17,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 				HibernateJpaAutoConfiguration.class
 		}
 )
-public class TutorialbeginnerApplication implements CommandLineRunner {
+public class TutorialbeginnerApplication {
 
 	@Autowired
 	JdbcTemplate jdbcTemplate;
